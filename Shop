@@ -1,0 +1,193 @@
+//Table for buyers
+CREATE TABLE buyers (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone VARCHAR(20),
+  address VARCHAR(200)
+);
+
+//Table for sellers
+CREATE TABLE sellers (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone VARCHAR(20),
+  address VARCHAR(200)
+);
+
+//Table for products
+CREATE TABLE products (
+  id INT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  price DECIMAL(10, 2) NOT NULL,
+  stock INT NOT NULL
+);
+
+//Table for orders
+CREATE TABLE orders (
+  id INT PRIMARY KEY,
+  buyer_id INT NOT NULL,
+  seller_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  order_date DATE NOT NULL,
+  FOREIGN KEY (buyer_id) REFERENCES buyers(id),
+  FOREIGN KEY (seller_id) REFERENCES sellers(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+//Insert data into the buyers table
+INSERT INTO buyers (id, name, email, phone, address)
+VALUES
+  (1, 'John Smith', 'john.smith@example.com', '+1 (555) 123-4567', '123 Main St'),
+  (2, 'Jane Doe', 'jane.doe@example.com', '+1 (714) 987-6543', '456 Broadway'),
+  (1, 'Micaela Kerwood', 'mkerwood0@rediff.com', '+1 (559) 485-9687', '02407 Sundown Court'),
+  (2, 'Nikolai Hindge', 'nhindge1@mapy.cz', '+56 (802) 434-7307', '925 Ridgeway Parkway'),
+  (3, 'Angela Brimmell', 'abrimmell2@lycos.com', '+1 (555) 352-0851', '99 Bonner Lane'),
+  (4, 'Artur Coate', 'acoate3@cbslocal.com', '+7 (202) 340-7293', '42 Melby Avenue'),
+  (5, 'Edlin Wollrauch', 'ewollrauch4@arstechnica.com', '+351 (144) 476-1598', '2 Rusk Park'),
+  (6, 'Junia Sockell', 'jsockell5@slashdot.org', '+48 (131) 239-3934', '734 Bartelt Avenue'),
+  (7, 'Tamera Colter', 'tcolter6@msu.edu', '+256 (980) 547-1095', '26 Veith Crossing'),
+  (8, 'Jarib Cleevely', 'jcleevely7@howstuffworks.com', '+30 (585) 831-6197', '17 Randy Park'),
+  (9, 'Jermain Lie', 'jlie8@latimes.com', '+996 (527) 472-6243', '89929 Mitchell Way'),
+  (10, 'Byram Kleiner', 'bkleiner9@utexas.edu', '+380 (467) 361-6666', '618 Swallow Hill'),
+  (11, 'Lamond Sager', 'lsagera@pagesperso-orange.fr', '+385 (229) 527-1235', '0277 Moose Park'),
+  (12, 'Aryn Matej', 'amatejb@tamu.edu', '+33 (154) 924-7504', '702 Dryden Alley'),
+  (13, 'Lurette Gamage', 'lgamagec@foxnews.com', '+86 (604) 740-3962', '5 Meadow Vale Lane'),
+  (14, 'Sarita Algar', 'salgard@themeforest.net', '+261 (675) 349-6019', '0 Springview Lane'),
+  (15, 'Cyril Warmington', 'cwarmingtone@twitter.com', '+86 (374) 272-7351', '9105 Carpenter Court'),
+  (16, 'Julina Orpen', 'jorpenf@census.gov', '+351 (693) 810-9852', '361 Corscot Road'),
+  (17, 'Margarita Veysey', 'mveyseyg@ca.gov', '+63 (827) 638-6542', '9929 Hudson Drive'),
+  (18, 'Gram McPeice', 'gmcpeiceh@ask.com', '+7 (864) 112-3848', '50 Onsgard Avenue');
+
+//Insert data into the sellers table
+INSERT INTO sellers (id, name, email, phone, address)
+VALUES
+  (1, 'Acme Corp', 'sales@acme.com', '+1 (813) 555-1212', '789 Market St'),
+  (2, 'XYZ Company', 'sales@xyz.com', '+1 (555) 555-2121', '321 Main St');
+  (3, 'Raynor, Mayer and Dicki', 'mcarlton0@nasa.gov', '+33 (859) 206-8130', '0985 Swallow Street');
+  (4, 'Medhurst, Kerluke and Wisozk', 'ghamlington1@privacy.gov.au', '+48 (504) 487-7999', '1051 Mendota Circle');
+  (5, 'Stehr, Wilderman and Collins', 'jhegg2@mail.ru', '+370 (246) 114-4609', '1 Red Cloud Court');
+  (6, 'Medhurst, Daniel and Ullrich', 'nmacpaden3@opensource.org', '+27 (109) 810-2055', '217 Onsgard Hill');
+  (7, 'Douglas Group', 'ebrummell4@nba.com', '+1 (813) 685-2583', '92 Service Way');
+  (8, 'Hills, Kutch and Simonis', 'fhengoed5@github.com', '+55 (677) 419-9236', '400 Basil Hill');
+  (9, 'Frami LLC', 'lalthorpe6@smugmug.com', '+7 (666) 586-1286', '81157 Gateway Parkway');
+  (10, 'Bechtelar-Reilly', 'nmanuel7@businessweek.com', '+56 (816) 287-3864', '6445 Arkansas Pass');
+  (11, 'Pacocha Inc', 'kpursey8@abc.net.au', '+86 (359) 923-5908', '23 Hanover Junction');
+  (12, 'Lang Inc', 'bberkeley9@phoca.cz', '+81 (674) 335-4066', '891 Hansons Pass');
+  (13, 'Davis, McKenzie and Thompson', 'fcuella@g.co', '+48 (209) 578-1317', '7146 Anzinger Way');
+  (14, 'Lesch, Nienow and Hackett', 'shablotb@slate.com', '+998 (508) 659-2717', '60 Hovde Alley');
+  (15, 'Mayert Inc', 'vcabanec@yahoo.com', '+66 (677) 419-3501', '36108 Prentice Lane');
+  (16, 'Mitchell-Hand', 'hbaruchd@ebay.com', '+252 (214) 160-2970', '8756 Twin Pines Way');
+  (17, 'Balistreri, Mitchell and Homenick', 'sannise@rakuten.co.jp', '+62 (505) 997-2344', '1 Loomis Terrace');
+  (18, 'Luettgen LLC', 'efirmingerf@webs.com', '+86 (213) 778-3882', '64439 Sunnyside Street');
+  (19, 'Rath-King', 'bstiegarg@istockphoto.com', '+48 (744) 794-3470', '14841 Orin Park');
+  (20, 'Mohr Group', 'bwhitakerh@addthis.com', '+55 (312) 153-4838', '183 Porter Terrace');
+
+//Insert data into the products table
+INSERT INTO products (id, name, price, stock)
+VALUES
+  (1, 'Bread - France', 10.99, 100),
+  (2, 'Soda - highly carbonated', 49.99, 50),
+  (3, 'Wine - 50 Years', 299.99, 10);
+  (1, 'Shark - Loin', 90.82, 421);
+  (2, 'Pepper - Green, Chili', 114.77, 72);
+  (3, 'Chicken Giblets', 60.32, 309);
+  (4, 'Beef - Short Loin', 65.03, 440);
+  (5, 'Ice Cream Bar - Hageen Daz To', 35.28, 310);
+  (6, 'Bread - Dark Rye, Loaf', 151.30, 324);
+  (7, 'Muffin - Mix - Strawberry Rhubarb', 99.75, 202);
+  (8, 'Pepper - Jalapeno', 56.03, 98);
+  (9, 'Kale - Red', 189.92, 436);
+  (10, 'Pork Ham Prager', 23.16, 599);
+  (11, 'Mahi Mahi', 194.50, 332);
+  (12, 'Vodka - Lemon, Absolut', 191.73, 521);
+  (13, 'Bread - Kimel Stick Poly', 144.39, 314);
+  (14, 'Bar - Sweet And Salty Chocolate', 106.89, 365);
+  (15, 'Beef - Top Butt Aaa', 95.43, 655);
+  (16, 'Oil - Grapeseed Oil', 122.35, 234);
+  (17, 'Veal - Liver', 105.40, 565);
+  (18, 'Food Colouring - Red', 78.81, 129);
+  (19, 'Isomalt', 26.33, 87);
+  (20, 'Soup - Campbells - Tomato', 62.11, 489);
+
+//Insert data into the orders table
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (1, 1, 19, 5, 1, '2023-01-07');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (2, 20, 17, 3, 16, '2023-02-06');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (3, 5, 5, 7, 18, '2023-02-18');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (4, 3, 7, 11, 3, '2023-01-03');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (5, 10, 15, 16, 15, '2023-01-02');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (6, 6, 19, 18, 16, '2023-02-10');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (7, 13, 11, 6, 5, '2023-01-28');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (8, 12, 13, 3, 10, '2023-01-28');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (9, 12, 5, 16, 10, '2023-02-28');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (10, 2, 8, 12, 11, '2023-01-01');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (11, 14, 20, 15, 19, '2023-01-01');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (12, 3, 19, 7, 9, '2023-01-07');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (13, 7, 18, 5, 15, '2023-02-11');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (14, 12, 13, 11, 7, '2023-01-23');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (15, 6, 7, 1, 20, '2023-01-31');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (16, 4, 1, 18, 11, '2023-01-12');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (17, 3, 18, 4, 7, '2023-01-11');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (18, 7, 16, 12, 9, '2023-01-03');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (19, 14, 9, 1, 9, '2023-02-04');
+insert into orders (id, buyer_id, seller_id, product_id, quantity, order_date) values (20, 10, 17, 19, 1, '2023-01-20');
+
+//Create an index on the "id" column of the buyers table
+CREATE INDEX buyers_id_index ON buyers (id);
+
+//Create an index on the "id" column of the sellers table
+CREATE INDEX sellers_id_index ON sellers (id);
+
+//Create an index on the "id" column of the products table
+CREATE INDEX products_id_index ON products (id);
+
+//Create an index on the "buyer_id" column of the orders table
+CREATE INDEX orders_buyer_id_index ON orders (buyer_id);
+
+//Create an index on the "seller_id" column of the orders table
+CREATE INDEX orders_seller_id_index ON orders (seller_id);
+
+//Create an index on the "product_id" column of the orders table
+CREATE INDEX orders_product_id_index ON orders (product_id);
+
+//Create a composite index on the "buyer_id" and "order_date" columns of the orders table
+CREATE INDEX orders_buyer_id_order_date_index ON orders (buyer_id, order_date);
+
+SELECT * FROM buyers;
+
+SELECT * FROM sellers;
+
+SELECT * FROM products;
+
+SELECT * FROM orders;
+
+SELECT name, email FROM buyers;
+
+SELECT name, email FROM sellers;
+
+SELECT name, price FROM products;
+
+SELECT COUNT(*) FROM orders;
+Retrieve the total sales revenue:
+
+SELECT SUM(quantity * price) AS revenue FROM orders
+JOIN products ON orders.product_id = products.id;
+
+SELECT SUM(quantity * price) AS revenue FROM orders
+JOIN products ON orders.product_id = products.id
+WHERE orders.seller_id = 5;
+
+SELECT buyers.name, COUNT(*) AS order_count FROM orders
+JOIN buyers ON orders.buyer_id = buyers.id
+GROUP BY buyers.id
+ORDER BY order_count DESC
+LIMIT 5;
+
+SELECT products.name, SUM(quantity) AS total_sold FROM orders
+JOIN products ON orders.product_id = products.id
+GROUP BY products.id
+ORDER BY total_sold DESC
+LIMIT 1;
